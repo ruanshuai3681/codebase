@@ -22,7 +22,7 @@ sns.lineplot(x="Max_unit", y="Ave_Gold_279_counts_per_gram", data=df.head(22), a
 sns.lineplot(x="Max_unit", y="Ave_Gold_279_counts_per_gram", data=df.iloc[22:45], ax=axes[1], label="A2", marker="o", linestyle='dotted')
 sns.lineplot(x="Max_unit", y="Ave_Gold_279_counts_per_gram", data=df.iloc[45:68], ax=axes[1], label="A3", marker="s", linestyle='dotted')
 axes[1].set_ylim(35, 85)
-axes[1].set_xlim(0, 28)
+axes[1].set_xlim(0, 29)
 axes[1].set_ylabel("Ave_Gold_279_counts_per_gram", fontsize=16, fontweight='bold')
 axes[1].set_xlabel("MAX_unit", fontsize=16, fontweight='bold')
 
