@@ -1,0 +1,19 @@
+# Customize the x-axis scales
+plt.xticks([1, 2, 3, 3.5, 4, 5], ['1', '2', '3', '3.5', '4', '5'])
+In this example, I've added a tick mark at 3.5 on the x-axis, with a corresponding label '3.5'.
+
+# Enable minor ticks on the x-axis
+plt.minorticks_on()
+# Customize minor tick marks
+plt.gca().xaxis.set_minor_locator(plt.MultipleLocator(0.5))  # Set minor ticks every 0.5 units
+
+KDE is a non-parametric way to estimate the probability density function of a random variable.
+It smooths out the histogram by representing the distribution as a continuous curve rather than discrete bars.
+
+g.fig.suptitle(): Adds a centered title to the entire figure.
+g.fig.set_size_inches(): Sets the size of the entire figure in inches.
+g.fig.savefig(): Saves the entire figure to a file.
+g.fig.subplots_adjust(): Adjusts the spacing between subplots.
+g.fig.tight_layout(): Automatically adjusts subplot parameters to give specified padding.
+
+astype(int): This converts the resulting substrings to integers.

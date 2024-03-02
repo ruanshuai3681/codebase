@@ -1,0 +1,15 @@
+import pandas as pd
+
+def createDataframe(student_data: List[List[int]]) -> pd.DataFrame:
+    column_names = ["student_id", "age"]
+    result_dataframe = pd.DataFrame(student_data, columns=column_names)
+    return result_dataframe
+
+import pandas as pd
+
+def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['bonus'] = employees['salary'] * 2
+    return employees
+
+
+
