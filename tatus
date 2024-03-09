@@ -1,0 +1,35 @@
+[33mcommit d53d682069f51ce0f53b5edf4c94457fb5ba84a4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtestbranch[m[33m, [m[1;31morigin/testbranch[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sun Mar 3 18:57:34 2024 +1030
+
+    delete testbranch
+
+[33mcommit 8cc98ae1274e0b6041b754d305084a4f1cc6510d[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sun Mar 3 18:27:06 2024 +1030
+
+    Your commit message here
+
+[33mcommit 275a9ee1cf0022c1cb6626a3ca156148b955c121[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sun Mar 3 17:55:40 2024 +1030
+
+    testtest
+
+[33mcommit ffa20bcbe0464dd6afcd68b0319bf2017cc12311[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sun Mar 3 17:33:34 2024 +1030
+
+    test commit on teste_branch
+
+[33mcommit 8ed0c2c441458ed8dec6d1a022f5f1b89ba59c9f[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sat Mar 2 21:19:17 2024 +1030
+
+    test
+
+[33mcommit 1be7d877504d53b8dbc169e0eda5d7c0ae7f7a25[m
+Author: shuai ruan <shuai.ruan@gmail.com>
+Date:   Sat Mar 2 21:06:23 2024 +1030
+
+    Initial commit

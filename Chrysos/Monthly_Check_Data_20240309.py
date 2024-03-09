@@ -11,7 +11,9 @@ def get_date_strings():
     today_nodash = datetime.now().strftime("%Y%m%d")
     last_week_date_with_dash = (datetime.now() - timedelta(weeks=1)).strftime("%Y-%m-%d")
     last_week_date_nodash = (datetime.now() - timedelta(weeks=1)).strftime("%Y%m%d")
-    return today_with_dash, today_nodash, last_week_date_with_dash, last_week_date_nodash
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
+    tomorrow = (datetime.now()+ timedelta(days=1)).strftime("%Y%m%d")
+    return today_with_dash, today_nodash, last_week_date_with_dash, last_week_date_nodash, yesterday, tomorrow
 
 def get_max_unit():
     while True:
@@ -38,11 +40,13 @@ def construct_url(max_unit, today_with_dash, last_week_date_with_dash):
     url += "&service_type=K-Cal%20PAAU02&show_plot=False&download_csv=True&export_detector=csv"
     return url
 
-def wait_for_download(today_nodash):
+def wait_for_download(today_nodash, yesterday, tomorrow):
     download_folder_path = os.path.join(os.path.expanduser('~'), 'Downloads')
     download_folder = Path(download_folder_path)
     while True:
-        downloaded_csv_files = list(download_folder.glob(f"{today_nodash}_*.csv"))
+        downloaded_csv_files = list(download_folder.glob(f"{today_nodash}_*.csv")) + \
+                           list(download_folder.glob(f"{yesterday}_*.csv")) + \
+                           list(download_folder.glob(f"{tomorrow}_*.csv"))
         if len(downloaded_csv_files) == 0:
             print("Waiting for analysis...")
             time.sleep(3)
@@ -51,7 +55,7 @@ def wait_for_download(today_nodash):
 
 def process_csv(csv_file_path):
     df = pd.read_csv(csv_file_path)
-    selected_columns = df.iloc[:, 11:24]
+    selected_columns = df.iloc[:, 11:27]
     average_values = selected_columns.mean().to_frame().T
     df = pd.concat([df, average_values], ignore_index=True)
     df = df[selected_columns.columns]
@@ -73,11 +77,11 @@ def delete_csv(csv_file_path):
     os.remove(csv_file_path)
 
 def main():
-    today_with_dash, today_nodash, last_week_date_with_dash, _ = get_date_strings()
+    today_with_dash, today_nodash, last_week_date_with_dash, yesterday, tomorrow, _ = get_date_strings()
     max_unit = get_max_unit()
     url = construct_url(max_unit, today_with_dash, last_week_date_with_dash)
     webbrowser.open(url)
-    csv_file_path = wait_for_download(today_nodash)
+    csv_file_path = wait_for_download(today_nodash, yesterday, tomorrow)
     last_row_transposed = process_csv(csv_file_path)
     output_file_path = Path(os.path.expanduser('~')) / 'Downloads' / f"MAX{max_unit} monthly check data.csv"
     save_last_row(last_row_transposed, output_file_path)
