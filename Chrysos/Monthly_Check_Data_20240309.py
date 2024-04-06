@@ -12,7 +12,7 @@ def get_date_strings():
     last_week_date_with_dash = (datetime.now() - timedelta(weeks=1)).strftime("%Y-%m-%d")
     last_week_date_nodash = (datetime.now() - timedelta(weeks=1)).strftime("%Y%m%d")
     yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y%m%d")
-    tomorrow = (datetime.now()+ timedelta(days=1)).strftime("%Y%m%d")
+    tomorrow = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
     return today_with_dash, today_nodash, last_week_date_with_dash, last_week_date_nodash, yesterday, tomorrow
 
 def get_max_unit():
@@ -25,19 +25,34 @@ def get_max_unit():
             print("Invalid input. Please enter an integer.")
 
 def construct_url(max_unit, today_with_dash, last_week_date_with_dash):
-    url = f"https://max{max_unit}:8000/detector/?"
-    url += f"&start={last_week_date_with_dash}%2000:00:00"
-    url += f"&end={today_with_dash}%2000:00:00&x_type=acquisition_time"
-    url += "&y_type=linac_energy_mev__value&y_type=linac_output__value"
-    url += "&y_type=beam_position_mm__gold__value&y_type=calibration_beam_position_mm"
-    url += "&y_type=bromine__ideal_zero_mass_ratio__value&y_type=bromine__zero_mass_ratio"
-    url += "&y_type=data_quality__low_energy_noise_bot_cps__value&y_type=data_quality__low_energy_noise_top_cps__value"
-    url += "&y_type=terbium_299_bot_counts__value"
-    url += "&y_type=scandium_889_bot_counts__value"
-    url += "&y_type=iridium_316_bot_counts__value"
-    url += "&y_type=hafnium_214_bot_counts__value"
-    url += "&y_type=bromine_207_bot_fwhm_kev__value&y_type=bromine_207_top_fwhm_kev__value"
-    url += "&service_type=K-Cal%20PAAU02&show_plot=False&download_csv=True&export_detector=csv"
+    if max_unit == 7:
+        url = f"https://max{max_unit}:8000/detector/?"
+        url += f"&start={last_week_date_with_dash}%2000:00:00"
+        url += f"&end={today_with_dash}%2000:00:00&x_type=acquisition_time"
+        url += "&y_type=linac_energy_mev__value&y_type=linac_output__value"
+        url += "&y_type=beam_position_mm__gold__value&y_type=calibration_beam_position_mm"
+        url += "&y_type=bromine__ideal_zero_mass_ratio__value&y_type=bromine__zero_mass_ratio"
+        url += "&y_type=data_quality__low_energy_noise_bot_cps__value&y_type=data_quality__low_energy_noise_top_cps__value"
+        url += "&y_type=terbium_299_bot_counts__value"
+        url += "&y_type=scandium_889_bot_counts__value"
+        url += "&y_type=iridium_316_bot_counts__value"
+        url += "&y_type=hafnium_214_top_counts__value"
+        url += "&y_type=bromine_207_bot_fwhm_kev__value&y_type=bromine_207_top_fwhm_kev__value"
+        url += "&service_type=K-Cal%20PAAUAG01&show_plot=False&download_csv=True&export_detector=csv"
+    else:
+        url = f"https://max{max_unit}:8000/detector/?"
+        url += f"&start={last_week_date_with_dash}%2000:00:00"
+        url += f"&end={today_with_dash}%2000:00:00&x_type=acquisition_time"
+        url += "&y_type=linac_energy_mev__value&y_type=linac_output__value"
+        url += "&y_type=beam_position_mm__gold__value&y_type=calibration_beam_position_mm"
+        url += "&y_type=bromine__ideal_zero_mass_ratio__value&y_type=bromine__zero_mass_ratio"
+        url += "&y_type=data_quality__low_energy_noise_bot_cps__value&y_type=data_quality__low_energy_noise_top_cps__value"
+        url += "&y_type=terbium_299_bot_counts__value"
+        url += "&y_type=scandium_889_bot_counts__value"
+        url += "&y_type=iridium_316_bot_counts__value"
+        url += "&y_type=hafnium_214_top_counts__value"
+        url += "&y_type=bromine_207_bot_fwhm_kev__value&y_type=bromine_207_top_fwhm_kev__value"
+        url += "&service_type=K-Cal%20PAAU02&show_plot=False&download_csv=True&export_detector=csv"
     return url
 
 def wait_for_download(today_nodash, yesterday, tomorrow):
