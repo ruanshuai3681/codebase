@@ -31,7 +31,7 @@ def login_to_website(max_unit, username, password):
 def scrape_crm_data(session, max_unit):
     """Scrape CRM data"""
     df = pd.DataFrame(columns=["jar_barcode", "CRM_type", "gross_mass", "fill", "date"])
-    crm_list = list(range(2882, 1270, -1))
+    crm_list = list(range(1711, 700, -1))
     for i in crm_list:
         page_url = f"https://max{max_unit}:8000/admin/photon_assay/crmjar/{i}/change/"
         page_response = session.get(page_url, verify=False)
